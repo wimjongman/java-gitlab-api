@@ -1,0 +1,281 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "Gravity Login",
+    "description" : "Gravity Login",
+    "termsOfService" : "http://rest4i.com/licenses/LICENSE-1.1.0.html",
+    "contact" : {
+      "name" : "Remain Software",
+      "url" : "https://remainsoftware.com",
+      "email" : "info@remainsoftware.com"
+    },
+    "license" : {
+      "name" : "Gravity License",
+      "url" : "https://remainsoftware.com/terms-and-conditions"
+    },
+    "version" : "1.0",
+    "x-lxrinfo" : {
+      "environment" : "yourEnvironment",
+      "timestamp" : "2017-06-23T09:32:43.511Z",
+      "refuuid" : "8f1066c8-9065-4d8a-9230-d2df8065dee0",
+      "x-path" : "/loginservice/#login"
+    }
+  },
+  "servers" : [ {
+    "url" : "https://helpdesk.remainsoftware.com/gravity/restful"
+  } ],
+  "paths" : {
+    "/grlogin" : {
+      "post" : {
+        "summary" : "Login",
+        "description" : "Login",
+        "operationId" : "loginservice/#login",
+        "requestBody" : {
+          "description" : "input",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/response"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/response"
+                }
+              }
+            }
+          }
+        }
+      },
+      "x-lxrgen" : {
+        "library" : "tidemo013d",
+        "srclibrary" : "tidemo013d",
+        "srcfile" : "qrpglesrc",
+        "consumer" : "grlogin",
+        "object" : "grlogin"
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "input" : {
+        "required" : [ "gravity.rest.method" ],
+        "type" : "object",
+        "properties" : {
+          "gravity.rest.method" : {
+            "maxLength" : 50,
+            "type" : "string",
+            "description" : "Description of gravity.rest.method"
+          },
+          "gravity.rest.role.name" : {
+            "maxLength" : 50,
+            "type" : "string",
+            "description" : "Description of gravity.rest.role.name"
+          },
+          "gravity.rest.user.password" : {
+            "maxLength" : 50,
+            "type" : "string",
+            "description" : "Description of gravity.rest.user.password"
+          },
+          "gravity.rest.acess.token.token" : {
+            "maxLength" : 50,
+            "type" : "string",
+            "description" : "Description of gravity.rest.acess.token.token"
+          }
+        }
+      },
+      "Attachment" : {
+        "required" : [ "gravity.rest.attachment.creationdate", "gravity.rest.attachment.creator.id", "gravity.rest.attachment.creator.name", "gravity.rest.attachment.download.web.link", "gravity.rest.attachment.id", "gravity.rest.attachment.is.image", "gravity.rest.attachment.name", "gravity.rest.attachment.persistable.id", "gravity.rest.attachment.size", "gravity.rest.entity.class.name", "gravity.rest.entity.version", "gravity.rest.extendable.is.template" ],
+        "type" : "object",
+        "properties" : {
+          "gravity.rest.attachment.id" : {
+            "type" : "string",
+            "description" : "The attachment id"
+          },
+          "gravity.rest.attachment.creationdate" : {
+            "type" : "integer",
+            "description" : "The attachment creation date as a long",
+            "format" : "int64"
+          },
+          "gravity.rest.entity.class.name" : {
+            "type" : "string",
+            "description" : "The JAVA class type of this entity"
+          },
+          "gravity.rest.entity.version" : {
+            "type" : "integer",
+            "description" : "Entity version",
+            "format" : "int32"
+          },
+          "gravity.rest.persistable.attachments" : {
+            "type" : "array",
+            "description" : "A collection of attachments belonging to this entity",
+            "items" : {
+              "$ref" : "#/components/schemas/Attachment"
+            }
+          },
+          "gravity.rest.entity.web.link" : {
+            "type" : "string",
+            "description" : "A web link to this entity"
+          },
+          "gravity.rest.persistable.is.from.history" : {
+            "type" : "boolean",
+            "description" : "Whether this entity is an old version from history database",
+            "default" : false
+          },
+          "gravity.rest.extendable.is.template" : {
+            "type" : "boolean",
+            "description" : "Whether this entity is a template",
+            "default" : false
+          },
+          "gravity.rest.attachment.name" : {
+            "type" : "string",
+            "description" : "The attachment name"
+          },
+          "gravity.rest.attachment.description" : {
+            "type" : "string",
+            "description" : "The attachment description"
+          },
+          "gravity.rest.attachment.creator.id" : {
+            "type" : "string",
+            "description" : "The attachment creator id"
+          },
+          "gravity.rest.attachment.persistable.id" : {
+            "type" : "string",
+            "description" : "The id of the entity this attachment belongs to"
+          },
+          "gravity.rest.attachment.mimetype" : {
+            "type" : "string",
+            "description" : "The attachment mime-type if available"
+          },
+          "gravity.rest.attachment.size" : {
+            "type" : "integer",
+            "description" : "The attachment size",
+            "format" : "int64"
+          },
+          "gravity.rest.attachment.creator.name" : {
+            "type" : "string",
+            "description" : "The attachment creator name"
+          },
+          "gravity.rest.attachment.download.web.link" : {
+            "type" : "string",
+            "description" : "A link to download this attachment from"
+          },
+          "gravity.rest.attachment.is.image" : {
+            "type" : "boolean",
+            "description" : "Whether this attachment is an image/picture",
+            "default" : false
+          }
+        }
+      },
+      "Address" : {
+        "required" : [ "gravity.rest.address.address1", "gravity.rest.address.emailaddress", "gravity.rest.address.firstname", "gravity.rest.address.id", "gravity.rest.address.lastname", "gravity.rest.entity.class.name", "gravity.rest.entity.version", "gravity.rest.extendable.is.template", "gravity.rest.persistable.creation.date" ],
+        "type" : "object",
+        "properties" : {
+          "gravity.rest.address.id" : {
+            "type" : "string",
+            "description" : "The address id"
+          },
+          "gravity.rest.persistable.creation.date" : {
+            "type" : "integer",
+            "description" : "The creation date of this entity as a numeric (Long) value",
+            "format" : "int64"
+          },
+          "gravity.rest.entity.class.name" : {
+            "type" : "string",
+            "description" : "The JAVA class type of this entity"
+          },
+          "gravity.rest.entity.version" : {
+            "type" : "integer",
+            "description" : "Entity version",
+            "format" : "int32"
+          },
+          "gravity.rest.persistable.attachments" : {
+            "type" : "array",
+            "description" : "A collection of attachments belonging to this entity",
+            "items" : {
+              "$ref" : "#/components/schemas/Attachment"
+            }
+          },
+          "gravity.rest.entity.web.link" : {
+            "type" : "string",
+            "description" : "A web link to this entity"
+          },
+          "gravity.rest.persistable.is.from.history" : {
+            "type" : "boolean",
+            "description" : "Whether this entity is an old version from history database",
+            "default" : false
+          },
+          "gravity.rest.extendable.is.template" : {
+            "type" : "boolean",
+            "description" : "Whether this entity is a template",
+            "default" : false
+          },
+          "gravity.rest.address.firstname" : {
+            "type" : "string",
+            "description" : "The address holder first name"
+          },
+          "gravity.rest.address.lastname" : {
+            "type" : "string",
+            "description" : "The address holder last name"
+          },
+          "gravity.rest.address.emailaddress" : {
+            "type" : "string",
+            "description" : "The address holder email"
+          },
+          "gravity.rest.address.website" : {
+            "type" : "string",
+            "description" : "The address holder website"
+          },
+          "gravity.rest.address.telephone" : {
+            "type" : "string",
+            "description" : "The address holder phone number"
+          },
+          "gravity.rest.address.address1" : {
+            "type" : "string",
+            "description" : "The first address"
+          },
+          "gravity.rest.address.address2" : {
+            "type" : "string",
+            "description" : "The second address"
+          },
+          "gravity.rest.address.postalcode" : {
+            "type" : "string",
+            "description" : "Postal code"
+          },
+          "gravity.rest.address.city" : {
+            "type" : "string",
+            "description" : "City"
+          },
+          "gravity.rest.address.province" : {
+            "type" : "string",
+            "description" : "Province/State"
+          },
+          "gravity.rest.address.change.country" : {
+            "type" : "string",
+            "description" : "Country"
+          },
+          "gravity.rest.address.change.birthday" : {
+            "type" : "integer",
+            "description" : "The address holder birthdate (as a long value)",
+            "format" : "int64"
+          }
+        }
+      },
+      "response" : {
+        "type" : "object",
+        "properties" : {
+          "gravity.rest.user.session.id" : {
+            "type" : "string",
+            "description" : "The session id"
+          }
+        }
+      }
+    }
+  }
+}
